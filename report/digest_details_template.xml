@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id='digest_views_id_pdf'>
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                      <div style='font-size: 22px;'>
+                            <p>标识: <span t-field="o.name"/></p>
+                      </div>
+                      <div>
+                          <h2><span t-field="o.date_from"/>-<span t-field="o.date_to"/>的<span t-field="o.user"/>报表</h2>
+                      </div>
+                      <div style='width: 100%;text-align: center;margin-top: 20px;font-size: 26px;'>本月数据汇总：</div>
+                      <div style='border: 2px solid black'/>
+                      
+                      <div class="row" style='margin-top: 60px;'>
+                        <div class="col-6" >
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>bom总列表个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.bom_line_num'></p>
+                            </div>
+                          </div>
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>bom加工件列表个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.bom_line_ids_j_num'></p>
+                            </div>
+                          </div>
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>bom选型列表个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.bom_line_ids_q_num'></p>
+                            </div>
+                          </div>
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>bom的父级:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.bom_father'></p>
+                            </div>
+                          </div>
+                            
+                        </div>
+                        <div class="col-6" >
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>制造订单的列表个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.adds_num'></p>
+                            </div>
+                          </div>
+                          <div class="row" style='line-height: 30px;'>
+                              <div class="col-5">
+                                <p>制造订单的父级:</p>
+                              </div>
+                              <div class="col-7">
+                                <p t-field='o.father'></p>
+                              </div>
+                            </div>
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>制造订单的父级个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.father_num'></p>
+                            </div>
+                          </div>
+                          <div class="row" style='line-height: 30px;'>
+                            <div class="col-5">
+                              <p>bom的父级个数:</p>
+                            </div>
+                            <div class="col-7">
+                              <p t-field='o.bom_father_num'></p>
+                            </div>
+                          </div>
+                            
+                        </div>
+                      </div>
+                      
+                      <div style='border: 1px solid black'/>
+                      <div style='margin-top: 40px;'>
+                        <div style='float:left;width: 15%;font-weight:700;font-size:20px'>制造订单增加项目:</div><div  t-field="o.project_adds"></div>
+                      </div>
+                      <div style='border: 1px dashed #ccc'/>
+                      
+                      <div style='margin-top: 40px;'>
+                        <div style='float:left;width: 15%;font-weight:700;font-size:20px'>bom项目:</div><div t-field="o.project"></div>
+                      </div>
+                      <div style='border: 1px dashed #ccc'/>
+                      
+                      <div style='margin-top: 40px;'>
+                        <div style='float:left;width: 15%;font-weight:700;font-size:20px'>制造订单修改项目:</div><div t-field="o.project_amend"></div>
+                      </div>
+                      <div style='border: 1px dashed #ccc'/>
+                      
+                      <div style='margin-top: 40px;' t-field="o.comparison_data"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

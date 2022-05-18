@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bom_card_use,access.bom.card,model_bom_card,base.group_user,1,0,0,0
+access_bom_cardr,access.bom.card,model_bom_card,base.group_system,1,1,1,1
+

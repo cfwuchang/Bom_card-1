@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="digest_views_tree" model="ir.ui.view">
+            <field name="name">bom_card_tree</field>
+            <field name="model">bom.card</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="user"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="bom_line_num" optional="show"/>
+                    <field name="bom_line_ids_j_num" optional="show"/>
+                    <field name="bom_line_ids_q_num" optional="show"/>
+                    <field name="adds_num" optional="show"/>
+                </tree>
+            </field>
+        </record>
+    
+    
+        <record id="digest_views_form" model="ir.ui.view">
+            <field name="name">bom_card_form</field>
+            <field name="model">bom.card</field>
+            <field name="arch" type="xml">
+                <form >
+                    <group name="criteria">
+                        <group>
+                            <field name="comparison" />
+                            <field name="name" />
+                            <field name="user" />
+                            <field name="date_from" />
+                            <field name="date_to"/>
+                            <field name="project_adds"/>
+                            <field name="project"/>
+                            <field name="project_amend"/>
+                        </group>
+                        <group>
+                            <field name="bom_line_num" force_save="1"/>
+                            <field name="bom_line_ids_j_num" force_save="1"/>
+                            <field name="bom_line_ids_q_num" force_save="1"/>
+                            <field name="adds_num" force_save="1"/>
+                            <field name="bom_father" force_save="1"/>
+                            <field name="bom_father_num" force_save="1"/>
+                            <field name="father" />
+                            <field name="father_num" force_save="1"/> 
+                            <field name="comparison_data" force_save="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="总列表" >
+                            <field name="bom_line_ids" >
+                                <tree string="总列表" >
+                                    <field name="bom_id" />
+                                    <field name="display_name" />
+                                    <field name="product_id" optional="show"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_category_id" />
+                                    <field name="attachments_count" />
+                                    <field name="create_uid" optional="show"/>
+                                    <field name="x_category" optional="show"/>
+                                </tree>
+                                
+                            </field>
+                        </page>
+                        <page string="加工件列表" >
+                            <field name="bom_line_ids_j" >
+                                <tree string="加工件列表" >
+                                    <field name="bom_id" />
+                                    <field name="display_name" />
+                                    <field name="product_id" optional="show"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_category_id" />
+                                    <field name="attachments_count" />
+                                    <field name="create_uid" optional="show"/>
+                                    <field name="x_category" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="选型列表" >
+                            <field name="bom_line_ids_q" >
+                                <tree string="选型列表" >
+                                    <field name="bom_id" />
+                                    <field name="display_name" />
+                                    <field name="product_id" optional="show"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_category_id" />
+                                    <field name="attachments_count" />
+                                    <field name="create_uid" optional="show"/>
+                                    <field name="x_category" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="制造订单增加的列表" >
+                            <!-- <field name="adds" >
+                                <tree string="制造订单增加的列表" >
+                                    <field name="production_id" />
+                                    <field name="display_name" />
+                                    <field name="product_id" optional="show"/>
+                                    <field name="product_qty" />
+                                    <field name="product_uom_category_id" />
+                                    <field name="create_uid" optional="show"/>
+                                    <field name="x_category" optional="show"/>
+                                </tree> 
+                            </field> -->
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+    
+        <record id="bom_card_action" model="ir.actions.act_window">
+            <field name="name">组件列表卡</field>
+            <field name="res_model">bom.card</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+    
+        <menuitem
+            id="bom_card_report_menu"
+            action="bom_card_action"
+            parent="mrp.menu_mrp_reporting"
+            sequence="30"
+        />
+    </data>  
+</odoo>
