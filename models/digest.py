@@ -13,10 +13,9 @@ class BomCard(models.Model):
 	date_to = fields.Date(string=u"结束时间",required=True)
 	name=fields.Char(string=u"标识",required=True)
 	comparison=fields.Many2one(string=u"上个月标识",comodel_name='bom.card')
-
+	
+	money=fields.Monetary(string=u"金额",help='非自动计算值，需要手动填写'）
 	comparison_data=fields.Html(string=u"对比数据",compute='_get_comparison_data')
-
-
 	
 	project=fields.Html(string=u"bom项目",compute='_get_project')
 	project_adds=fields.Html(string=u"制造订单增加项目",compute='_get_project_adds')
